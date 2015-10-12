@@ -1,0 +1,14 @@
+extends layout
+
+block content
+  h1 Publicação em grupo(s)
+  p Escolha o(s) grupo(s), escreva o post e publique!
+  form(action="/post/new", method="post")
+    div(style="height: 100px; overflow: scroll;")
+      ul
+        each group in groups
+          li= group.name
+            input(type="checkbox", value="#{group.id}", name="groups")
+    textarea(placeholder="Post", name="body", required="true")
+    br
+    input(type="submit" value="Publicar")
